@@ -1,0 +1,5 @@
+---
+- name: Restart something
+  debug:
+    msg: hello from handler
+  tags: restart-something

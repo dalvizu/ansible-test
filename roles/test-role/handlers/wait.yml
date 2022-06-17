@@ -1,0 +1,4 @@
+---
+- name: two schools of thought
+  debug:
+    msg: "brown bears are {{ brown_bears }}"

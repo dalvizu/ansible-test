@@ -1,0 +1,23 @@
+---
+# This playbook prints a simple debug message
+- name: Echo
+  hosts: 127.0.0.1
+  connection: local
+  vars:
+    tmp_dir: "/Users/danalvizu/tmp2"
+    should_evaluate: false
+  tasks:
+    - set_fact:
+        foo: bar
+    - name: Debug the {{ foo }}
+      debug:
+        msg: "foo is {{ foo }}"
+    - name: Create special tmp dir {{ tmp_dir }}
+      file:
+        path: "{{ tmp_dir }}"
+        state: directory
+    - name: include test-role
+      include_role:
+        name: test-role
+
+

@@ -1,0 +1,21 @@
+---
+
+- name: Echo
+  hosts: 127.0.0.1
+  connection: local
+
+  tasks:
+    - name: Prevent run without tags
+      fail: msg="You must run this playbook with tags!"
+    - include_role:
+        name: "{{ role_item }}"
+      loop:
+        - test-role
+      loop_control:
+        loop_var: role_item
+      tags: always
+    - name: include all handlers
+      include_tasks:
+        file: "{{ item }}"
+      with_items: "{{'roles/*/handlers/*' | fileglob}}"
+      tags: always

@@ -1,0 +1,16 @@
+---
+- name: sigh
+  debug:
+    msg: 'hello from role'
+  tags: role-task
+- name: test pig latin
+  debug:
+    msg: "{{ 'hello world'|to_pig_latin }}"
+- name: set fact
+  set_fact:
+    brown_bears: "best"
+- name: import tasks with variable
+  include_tasks: test-tasks.yml
+  vars:
+    test_var: foo
+  when: foo == 'bak'

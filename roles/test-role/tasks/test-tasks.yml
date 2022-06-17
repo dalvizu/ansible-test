@@ -1,0 +1,7 @@
+---
+- name: sigh
+  debug:
+    msg: 'hello from task'
+- name: variable
+  debug:
+    msg: "Variable is {{ test_var }} "
